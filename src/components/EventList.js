@@ -1,27 +1,13 @@
-import React, { Component } from "react";
-import Axios from "axios";
+import React from "react";
 
-class EventsList extends Component {
-  constructor() {
-    super();
-    this.state = { events: [] };
-  }
-  componentDidMount() {
-    Axios.get("http://localhost:3000/db_api/read/event").then((response) => {
-      console.log(response.data.events);
-      this.setState({ events: response.data.events });
-    });
-  }
-
-  render() {
-    return (
+export default function EventList(prop) {
+  return (
+    <div>
       <ul>
-        {this.state.events.map((event) => {
+        {this.props.events.map((event) => {
           return <li key={event.event_id}>{event.event_name}</li>;
         })}
       </ul>
-    );
-  }
+    </div>
+  );
 }
-
-export default EventsList;
