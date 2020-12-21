@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import EventsList from "./components/EventList";
+import EventList from "./EventList";
 
 //Lifting state up to Event since no need to refresh page on new db entry
 class Events extends Component {
@@ -16,12 +16,10 @@ class Events extends Component {
     });
   }
 
-  handleEventlistChange()
+  handleEventlistChange() {}
 
   render() {
-    return <div>
-        <EventsList/>
-    </div>;
+    return <div>{<EventList events={this.state.events} />}</div>;
   }
 }
 

@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function EventList(prop) {
+export default function EventList(props) {
   return (
     <div>
       <ul>
-        {this.props.events.map((event) => {
+        {props.events.map((event) => {
           return <li key={event.event_id}>{event.event_name}</li>;
         })}
       </ul>
