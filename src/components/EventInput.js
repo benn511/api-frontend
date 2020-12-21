@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Axios from "axios";
 
 class EventsInput extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { name: "", description: "", owner: "", res: "" };
   }
 
@@ -18,6 +18,7 @@ class EventsInput extends Component {
       .then((response) => {
         console.log(response);
         this.setState({ res: response.data.msg });
+        this.props.onNewEvent(response.data.event);
       })
       .catch((error) => {
         console.log(error);

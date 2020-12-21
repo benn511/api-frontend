@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import EventList from "./EventList";
+import EventsInput from "./EventInput";
 
 //Lifting state up to Event since no need to refresh page on new db entry
 class Events extends Component {
   constructor() {
     super();
+    this.handleNewEvent = this.handleNewEvent.bind(this);
     this.state = { events: [] };
   }
 
@@ -16,10 +18,17 @@ class Events extends Component {
     });
   }
 
-  handleEventlistChange() {}
+  handleNewEvent(newData) {
+    this.setState({ events: [...this.state.events, newData] });
+  }
 
   render() {
-    return <div>{<EventList events={this.state.events} />}</div>;
+    return (
+      <div>
+        <EventsInput onNewEvent={this.handleNewEvent} />
+        <EventList events={this.state.events} />
+      </div>
+    );
   }
 }
 
