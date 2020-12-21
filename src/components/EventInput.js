@@ -14,8 +14,6 @@ class EventsInput extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Sending request with attributes from state to");
-    console.log("http://localhost:3000/db_api/create/event");
     Axios.post("http://localhost:3000/db_api/create/event", this.state)
       .then((response) => {
         console.log(response);
