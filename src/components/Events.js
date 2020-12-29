@@ -12,7 +12,7 @@ class Events extends Component {
   }
 
   componentDidMount() {
-    Axios.get("http://localhost:3000/db_api/read/event").then((response) => {
+    Axios.get("http://localhost:3000/db_api/read/events").then((response) => {
       console.log(response.data.events);
       this.setState({ events: response.data.events });
     });
