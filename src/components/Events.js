@@ -22,11 +22,19 @@ class Events extends Component {
     this.setState({ events: [...this.state.events, newData] });
   }
 
+  handleDeleteEvent(id) {
+    console.log(id);
+    //Axios request: Delete element from DB with id passed
+  }
+
   render() {
     return (
       <div>
         <EventsInput onNewEvent={this.handleNewEvent} />
-        <EventList events={this.state.events} />
+        <EventList
+          events={this.state.events}
+          handleDeleteEvent={this.handleDeleteEvent}
+        />
       </div>
     );
   }
