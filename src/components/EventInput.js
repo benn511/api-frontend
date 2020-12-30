@@ -27,17 +27,58 @@ class EventsInput extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Event Name: </label>
-          <input type="text" name="name" onChange={this.handleChange} />
-          <label htmlFor="">Event description: </label>
-          <input type="text" name="description" onChange={this.handleChange} />
-          <label htmlFor="">Event Owner: </label>
-          <input type="text" name="owner" onChange={this.handleChange} />
-          <button type="submit">Add</button>
+      <div className="row">
+        {/* Materialize form */}
+        <form className="col s12" onSubmit={this.handleSubmit}>
+          {/* Owner and Event Name */}
+          <div className="row">
+            {/* Owner input */}
+            <div className="input-field col s6">
+              <i className="material-icons prefix">account_circle</i>
+              <input
+                type="text"
+                id="icon_prefix"
+                className="validate"
+                onChange={this.handleChange}
+                name="owner"
+              />
+              <label htmlFor="icon_prefix">Owner</label>
+            </div>
+            {/* Event Name*/}
+            <div className="input-field col s6">
+              <i className="material-icons prefix">event</i>
+              <input
+                type="text"
+                id="icon_event"
+                className="validate"
+                name="name"
+                onChange={this.handleChange}
+              />
+              <label htmlFor="icon_event">Event Name</label>
+            </div>
+          </div>
+          {/* Description and add button */}
+          <div className="row">
+            {/* Description text input */}
+            <div className="input-field col s11">
+              <i className="material-icons prefix">insert_comment</i>
+              <input
+                type="text"
+                id="icon_comment"
+                className="validate"
+                onChange={this.handleChange}
+                name="description"
+              />
+              <label htmlFor="icon_comment">Description</label>
+            </div>
+            {/* Add button */}
+            <div class="col s1">
+              <button type="submit" class="btn btn-medium green">
+                <i class="material-icons">add</i>
+              </button>
+            </div>
+          </div>
         </form>
-        <h2>{this.state.res}</h2>
       </div>
     );
   }
