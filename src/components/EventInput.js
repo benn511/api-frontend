@@ -26,19 +26,6 @@ class EventsInput extends Component {
     });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    Axios.post("http://localhost:3000/db_api/create/event", this.state)
-      .then((response) => {
-        console.log(response);
-        this.setState({ res: response.data.msg });
-        this.props.onNewEvent(response.data.event);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   render() {
     return (
       <div className="row">
@@ -97,7 +84,9 @@ class EventsInput extends Component {
             {/* Input button */}
             <InputButton
               currEditing={this.props.currEditing}
-              handleEdit={this.handleEdit}
+              handleSubmitEdit={this.props.handleSubmitEdit}
+              handleCreateEvent={this.props.handleCreateEvent}
+              event={this.props.event}
             />
           </div>
         </form>

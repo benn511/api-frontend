@@ -1,21 +1,31 @@
 import React from "react";
 
-function SubmitButton() {
+function SubmitButton(props) {
   return (
     <div className="col s1">
-      <button type="submit" className="btn btn-medium green">
+      <button
+        onClick={() => {
+          props.handleCreateEvent();
+        }}
+        className="btn btn-medium green"
+      >
         <i className="material-icons">add</i>
       </button>
     </div>
   );
 }
 
-function EditButton() {
+function EditButton(props) {
   //On click i want to update that record inside of event state array
   //I will do this by using props function passed
   return (
     <div className="col s1">
-      <button onClick={() => {}} className="btn btn-medium yellow darken-2">
+      <button
+        onClick={() => {
+          props.handleSubmitEdit(props.event);
+        }}
+        className="btn btn-medium yellow darken-2"
+      >
         <i className="material-icons">edit</i>
       </button>
     </div>
@@ -24,8 +34,18 @@ function EditButton() {
 
 export default function InputButton(props) {
   if (props.currEditing) {
-    return <EditButton />;
+    return (
+      <EditButton
+        handleSubmitEdit={props.handleSubmitEdit}
+        event={props.event}
+      />
+    );
   } else {
-    return <SubmitButton />;
+    return (
+      <SubmitButton
+        handleCreateEvent={props.handleCreateEvent}
+        event={props.event}
+      />
+    );
   }
 }
