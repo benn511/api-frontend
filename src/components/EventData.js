@@ -14,7 +14,7 @@ export default function EventList(props) {
             props.currEditing ? "disabled" : ""
           } btn-floating btn-medium waves-effect waves-light yellow darken-2`}
           onClick={() => {
-            props.handleEditEvent();
+            props.handleEditEvent(props.event);
           }}
         >
           <i className="material-icons">edit</i>

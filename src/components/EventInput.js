@@ -18,6 +18,14 @@ class EventsInput extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  handleEdit = (event) => {
+    this.setState({
+      name: event.event_name,
+      description: event.event_description,
+      owner: event.event_owner,
+    });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3000/db_api/create/event", this.state)
@@ -47,6 +55,7 @@ class EventsInput extends Component {
                 className="validate"
                 onChange={this.handleChange}
                 name="owner"
+                value={this.props.event.event_owner}
               />
               <label htmlFor="icon_prefix" className="active">
                 Owner
@@ -61,6 +70,7 @@ class EventsInput extends Component {
                 className="validate"
                 name="name"
                 onChange={this.handleChange}
+                value={this.props.event.event_name}
               />
               <label htmlFor="icon_event" className="active">
                 Event Name
@@ -78,13 +88,17 @@ class EventsInput extends Component {
                 className="validate"
                 onChange={this.handleChange}
                 name="description"
+                value={this.props.event.event_description}
               />
               <label htmlFor="icon_comment" className="active">
                 Description
               </label>
             </div>
             {/* Input button */}
-            <InputButton currEditing={this.props.currEditing} />
+            <InputButton
+              currEditing={this.props.currEditing}
+              handleEdit={this.handleEdit}
+            />
           </div>
         </form>
       </div>
