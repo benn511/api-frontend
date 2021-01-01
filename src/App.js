@@ -5,7 +5,7 @@ import Events from "./components/Events";
 function App() {
   return (
     <div className="App">
-      <h1>React app</h1>
+      <h1>Event Management Tool</h1>
       <Events />
     </div>
   );

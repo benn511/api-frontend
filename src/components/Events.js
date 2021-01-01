@@ -8,6 +8,7 @@ class Events extends Component {
   constructor() {
     super();
     this.handleNewEvent = this.handleNewEvent.bind(this);
+    this.handleDeleteEvent = this.handleDeleteEvent.bind(this);
     this.state = { events: [] };
   }
 
@@ -23,8 +24,18 @@ class Events extends Component {
   }
 
   handleDeleteEvent(id) {
-    console.log(id);
     //Axios request: Delete element from DB with id passed
+    console.log(
+      `Not actually fetching url yet but heres what it would look like....\nhttp://localhost:3000/db_api/delete/event/${id}`
+    );
+    //Remove the requested event from array
+    let array = [...this.state.events]; //Make separate copy of array
+    for (let i = 0; i < array.length; i++) {
+      if (id == array[i].event_id) {
+        array.splice(i, 1);
+        this.setState({ events: array });
+      }
+    }
   }
 
   render() {

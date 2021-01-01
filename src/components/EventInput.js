@@ -4,7 +4,13 @@ import Axios from "axios";
 class EventsInput extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", description: "", owner: "", res: "" };
+    this.state = {
+      name: "",
+      description: "",
+      owner: "",
+      res: "",
+      focus: false,
+    };
   }
 
   handleChange = (event) => {
@@ -42,7 +48,9 @@ class EventsInput extends Component {
                 onChange={this.handleChange}
                 name="owner"
               />
-              <label htmlFor="icon_prefix">Owner</label>
+              <label htmlFor="icon_prefix" className="active">
+                Owner
+              </label>
             </div>
             {/* Event Name*/}
             <div className="input-field col s6">
@@ -54,13 +62,15 @@ class EventsInput extends Component {
                 name="name"
                 onChange={this.handleChange}
               />
-              <label htmlFor="icon_event">Event Name</label>
+              <label htmlFor="icon_event" className="active">
+                Event Name
+              </label>
             </div>
           </div>
           {/* Description and add button */}
           <div className="row">
             {/* Description text input */}
-            <div className="input-field col s11">
+            <div className="input-field col s11 ">
               <i className="material-icons prefix">insert_comment</i>
               <input
                 type="text"
@@ -69,12 +79,14 @@ class EventsInput extends Component {
                 onChange={this.handleChange}
                 name="description"
               />
-              <label htmlFor="icon_comment">Description</label>
+              <label htmlFor="icon_comment" className="active">
+                Description
+              </label>
             </div>
             {/* Add button */}
-            <div class="col s1">
-              <button type="submit" class="btn btn-medium green">
-                <i class="material-icons">add</i>
+            <div className="col s1">
+              <button type="submit" className="btn btn-medium green">
+                <i className="material-icons">add</i>
               </button>
             </div>
           </div>
