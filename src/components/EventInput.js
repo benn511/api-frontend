@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import InputButton from "./InputButton";
 import Axios from "axios";
 
 class EventsInput extends Component {
@@ -82,12 +83,8 @@ class EventsInput extends Component {
                 Description
               </label>
             </div>
-            {/* Add button */}
-            <div className="col s1">
-              <button type="submit" className="btn btn-medium green">
-                <i className="material-icons">add</i>
-              </button>
-            </div>
+            {/* Input button */}
+            <InputButton isEditing={false} />
           </div>
         </form>
       </div>
