@@ -29,13 +29,8 @@ class Events extends Component {
       `Not actually fetching url yet but heres what it would look like....\nhttp://localhost:3000/db_api/delete/event/${id}`
     );
     //Remove the requested event from array
-    let array = [...this.state.events]; //Make separate copy of array
-    for (let i = 0; i < array.length; i++) {
-      if (id == array[i].event_id) {
-        array.splice(i, 1);
-        this.setState({ events: array });
-      }
-    }
+    let array = this.state.events.filter((event) => event.event_id !== id);
+    this.setState({ events: array });
   }
 
   render() {
