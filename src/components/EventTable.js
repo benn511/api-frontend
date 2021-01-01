@@ -1,9 +1,9 @@
 import React from "react";
-import EventData from "../components/EventData";
+import EventData from "./EventData";
 
 /* Missing style, missing delete button,  */
 
-export default function EventList(props) {
+export default function EventTable(props) {
   return (
     <div>
       <table className="striped centered responsive-table">
@@ -13,6 +13,7 @@ export default function EventList(props) {
             <th>Name</th>
             <th>Description</th>
             <th>Owner</th>
+            <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -23,6 +24,7 @@ export default function EventList(props) {
               <EventData
                 key={event.event_id}
                 event={event}
+                handleEditEvent={props.handleEditEvent}
                 handleDeleteEvent={props.handleDeleteEvent}
               />
             );

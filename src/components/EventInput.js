@@ -9,7 +9,6 @@ class EventsInput extends Component {
       description: "",
       owner: "",
       res: "",
-      focus: false,
     };
   }
 
