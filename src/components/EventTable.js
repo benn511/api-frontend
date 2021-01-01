@@ -26,6 +26,7 @@ export default function EventTable(props) {
                 event={event}
                 handleEditEvent={props.handleEditEvent}
                 handleDeleteEvent={props.handleDeleteEvent}
+                currEditing={props.currEditing}
               />
             );
           })}

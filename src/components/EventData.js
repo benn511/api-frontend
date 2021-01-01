@@ -3,15 +3,16 @@ import React from "react";
 /* Missing style, missing delete button,  */
 
 export default function EventList(props) {
-  let tr = true;
   return (
     <tr>
-      <td contentEditable={tr}>{props.event.event_name}</td>
+      <td>{props.event.event_name}</td>
       <td>{props.event.event_description}</td>
       <td>{props.event.event_owner}</td>
       <td>
         <button
-          className="btn-floating btn-medium waves-effect waves-light yellow darken-2"
+          className={` ${
+            props.currEditing ? "disabled" : ""
+          } btn-floating btn-medium waves-effect waves-light yellow darken-2`}
           onClick={() => {
             props.handleEditEvent();
           }}

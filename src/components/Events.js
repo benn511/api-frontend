@@ -10,7 +10,7 @@ class Events extends Component {
     this.handleNewEvent = this.handleNewEvent.bind(this);
     this.handleDeleteEvent = this.handleDeleteEvent.bind(this);
     this.handleEditEvent = this.handleEditEvent.bind(this);
-    this.state = { events: [], editing: true };
+    this.state = { events: [], currEditing: false };
   }
 
   componentDidMount() {
@@ -34,7 +34,10 @@ class Events extends Component {
     this.setState({ events: array });
   }
 
-  handleEditEvent() {}
+  handleEditEvent() {
+    let editable = !this.state.currEditing;
+    this.setState({ currEditing: editable });
+  }
 
   render() {
     return (
@@ -43,6 +46,8 @@ class Events extends Component {
         <EventTable
           events={this.state.events}
           handleDeleteEvent={this.handleDeleteEvent}
+          handleEditEvent={this.handleEditEvent}
+          currEditing={this.state.currEditing}
         />
       </div>
     );
