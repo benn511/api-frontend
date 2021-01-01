@@ -84,7 +84,7 @@ class EventsInput extends Component {
               </label>
             </div>
             {/* Input button */}
-            <InputButton isEditing={false} />
+            <InputButton currEditing={this.props.currEditing} />
           </div>
         </form>
       </div>

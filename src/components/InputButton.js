@@ -10,7 +10,7 @@ function SubmitButton() {
   );
 }
 
-function EditButton(props) {
+function EditButton() {
   //On click i want to update that record inside of event state array
   //I will do this by using props function passed
   return (
@@ -23,7 +23,7 @@ function EditButton(props) {
 }
 
 export default function InputButton(props) {
-  if (props.isEditing) {
+  if (props.currEditing) {
     return <EditButton />;
   } else {
     return <SubmitButton />;

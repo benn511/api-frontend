@@ -42,7 +42,10 @@ class Events extends Component {
   render() {
     return (
       <div>
-        <EventsInput onNewEvent={this.handleNewEvent} />
+        <EventsInput
+          onNewEvent={this.handleNewEvent}
+          currEditing={this.state.currEditing}
+        />
         <EventTable
           events={this.state.events}
           handleDeleteEvent={this.handleDeleteEvent}
