@@ -51,12 +51,14 @@ class Events extends Component {
     this.setState({ event: event });
   }
 
-  handleSubmitEdit(event) {
-    console.log(event);
+  handleSubmitEdit(e, event) {
+    e.preventDefault();
+    console.log("Clicking submit button");
   }
 
-  handleCreateEvent(event) {
-    console.log("Creating new event", event);
+  handleCreateEvent(e, event) {
+    e.preventDefault();
+    console.log("Clicking Create button");
   }
 
   render() {
@@ -69,12 +71,12 @@ class Events extends Component {
           handleSubmitEdit={this.handleSubmitEdit}
           handleCreateEvent={this.handleCreateEvent}
         />
-        <EventTable
+        {/* <EventTable
           events={this.state.events}
           handleDeleteEvent={this.handleDeleteEvent}
           handleEditEvent={this.handleEditEvent}
           currEditing={this.state.currEditing}
-        />
+        /> */}
       </div>
     );
   }

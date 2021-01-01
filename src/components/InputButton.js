@@ -4,8 +4,8 @@ function SubmitButton(props) {
   return (
     <div className="col s1">
       <button
-        onClick={() => {
-          props.handleCreateEvent();
+        onClick={(e) => {
+          props.handleCreateEvent(e);
         }}
         className="btn btn-medium green"
       >
@@ -21,8 +21,8 @@ function EditButton(props) {
   return (
     <div className="col s1">
       <button
-        onClick={() => {
-          props.handleSubmitEdit(props.event);
+        onClick={(e) => {
+          props.handleSubmitEdit(e, props.event);
         }}
         className="btn btn-medium yellow darken-2"
       >

@@ -6,9 +6,11 @@ class EventsInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      description: "",
-      owner: "",
+      name: props.event.event_name ? props.event.event_name : "",
+      description: props.event.event_description
+        ? props.event.event_description
+        : "",
+      owner: props.event.event_owner ? props.event.event_owner : "",
       res: "",
     };
   }
@@ -42,7 +44,7 @@ class EventsInput extends Component {
                 className="validate"
                 onChange={this.handleChange}
                 name="owner"
-                value={this.props.event.event_owner}
+                value={this.state.owner}
               />
               <label htmlFor="icon_prefix" className="active">
                 Owner
@@ -57,7 +59,7 @@ class EventsInput extends Component {
                 className="validate"
                 name="name"
                 onChange={this.handleChange}
-                value={this.props.event.event_name}
+                value={this.state.name}
               />
               <label htmlFor="icon_event" className="active">
                 Event Name
@@ -75,7 +77,7 @@ class EventsInput extends Component {
                 className="validate"
                 onChange={this.handleChange}
                 name="description"
-                value={this.props.event.event_description}
+                value={this.state.description}
               />
               <label htmlFor="icon_comment" className="active">
                 Description
