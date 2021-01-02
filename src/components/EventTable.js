@@ -20,17 +20,15 @@ export default function EventTable(props) {
         {/* Data from REST API */}
         <tbody>
           {props.events.map((event) => {
-            if (event) {
-              return (
-                <EventData
-                  key={event.event_id}
-                  event={event}
-                  handleEditEvent={props.handleEditEvent}
-                  handleDeleteEvent={props.handleDeleteEvent}
-                  currEditing={props.currEditing}
-                />
-              );
-            }
+            return (
+              <EventData
+                key={event.event_id}
+                event={event}
+                handleEditEvent={props.handleEditEvent}
+                handleDeleteEvent={props.handleDeleteEvent}
+                currEditing={props.currEditing}
+              />
+            );
           })}
         </tbody>
       </table>

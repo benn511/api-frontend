@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import InputButton from "./InputButton";
-import Axios from "axios";
 
 class EventsInput extends Component {
   constructor(props) {
@@ -11,6 +10,7 @@ class EventsInput extends Component {
         ? props.event.event_description
         : "",
       owner: props.event.event_owner ? props.event.event_owner : "",
+      id: props.event.event_id ? props.event.event_id : "",
       res: "",
     };
   }
@@ -27,6 +27,17 @@ class EventsInput extends Component {
       owner: event.event_owner,
     });
   };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.event !== prevProps.event) {
+      this.setState({
+        description: this.props.event.event_description,
+        id: this.props.event.event_id,
+        name: this.props.event.event_name,
+        owner: this.props.event.event_owner,
+      });
+    }
+  }
 
   render() {
     return (
