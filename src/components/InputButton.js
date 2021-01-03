@@ -22,7 +22,7 @@ function EditButton(props) {
     <div className="col s1">
       <button
         onClick={(e) => {
-          props.handleSubmitEdit(e, props.event);
+          props.handleEditSubmit(e, props.event);
         }}
         className="btn btn-medium yellow darken-2"
       >
@@ -36,7 +36,7 @@ export default function InputButton(props) {
   if (props.currEditing) {
     return (
       <EditButton
-        handleSubmitEdit={props.handleSubmitEdit}
+        handleEditSubmit={props.handleEditSubmit}
         event={props.event}
       />
     );

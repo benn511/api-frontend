@@ -7,11 +7,15 @@ import EventsInput from "./EventInput";
 class Events extends Component {
   constructor() {
     super();
+    /* First component: EventInput */
+    this.handleChange = this.handleChange.bind(this);
     this.handleNewEvent = this.handleNewEvent.bind(this);
-    this.handleDeleteEvent = this.handleDeleteEvent.bind(this);
-    this.handleEditEvent = this.handleEditEvent.bind(this);
     this.handleSubmitEdit = this.handleSubmitEdit.bind(this);
-    this.handleCreateEvent = this.handleCreateEvent.bind(this);
+    this.handleSubmitCreate = this.handleSubmitCreate.bind(this);
+
+    /* Second component: EventTable */
+    this.handleEditEvent = this.handleEditEvent.bind(this);
+    this.handleDeleteEvent = this.handleDeleteEvent.bind(this);
     this.state = {
       events: [],
       currEditing: false,
@@ -31,8 +35,32 @@ class Events extends Component {
     });
   }
 
+  /* Functions for EventInput */
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   handleNewEvent(newData) {
     this.setState({ events: [...this.state.events, newData] });
+  }
+
+  handleSubmitEdit(e, event) {
+    e.preventDefault();
+    console.log("Clicking Edit button");
+    console.log(event);
+  }
+
+  handleSubmitCreate(e, event) {
+    e.preventDefault();
+    console.log("Clicking Create button");
+  }
+
+  /* Functions for EventTable */
+  handleEditEvent(event) {
+    let editable = !this.state.currEditing;
+    this.setState({ currEditing: editable });
+    this.setState({ event: event });
   }
 
   handleDeleteEvent(id) {
@@ -45,39 +73,20 @@ class Events extends Component {
     this.setState({ events: array });
   }
 
-  handleEditEvent(event) {
-    let editable = !this.state.currEditing;
-    this.setState({ currEditing: editable });
-    this.setState({ event: event });
-  }
-
-  handleSubmitEdit(e, event) {
-    e.preventDefault();
-    console.log("Clicking Edit button");
-    console.log(event);
-  }
-
-  handleCreateEvent(e, event) {
-    e.preventDefault();
-    console.log("Clicking Create button");
-  }
-
   render() {
     return (
       <div>
         <EventsInput
-          onNewEvent={this.handleNewEvent}
-          currEditing={this.state.currEditing}
+          handleChange={this.handleChange}
           event={this.state.event}
-          handleSubmitEdit={this.handleSubmitEdit}
-          handleCreateEvent={this.handleCreateEvent}
+          currEditing={this.state.currEditing}
         />
-        <EventTable
+        {/* <EventTable
           events={this.state.events}
           handleDeleteEvent={this.handleDeleteEvent}
           handleEditEvent={this.handleEditEvent}
           currEditing={this.state.currEditing}
-        />
+        /> */}
       </div>
     );
   }
