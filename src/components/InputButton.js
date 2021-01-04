@@ -5,7 +5,7 @@ function SubmitButton(props) {
     <div className="col s1">
       <button
         onClick={(e) => {
-          props.handleCreateEvent(e);
+          props.handleSubmit(e, true);
         }}
         className="btn btn-medium green"
       >
@@ -22,7 +22,7 @@ function EditButton(props) {
     <div className="col s1">
       <button
         onClick={(e) => {
-          props.handleSubmit(e);
+          props.handleSubmit(e, false);
         }}
         className="btn btn-medium yellow darken-2"
       >
@@ -37,10 +37,7 @@ export default function InputButton(props) {
     return <EditButton handleSubmit={props.handleSubmit} event={props.event} />;
   } else {
     return (
-      <SubmitButton
-        handleCreateEvent={props.handleCreateEvent}
-        event={props.event}
-      />
+      <SubmitButton handleSubmit={props.handleSubmit} event={props.event} />
     );
   }
 }

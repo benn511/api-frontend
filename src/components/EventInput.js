@@ -10,7 +10,7 @@ class EventsInput extends React.Component {
     this.description = React.createRef();
   }
 
-  handleSubmit(e) {
+  handleSubmit(e, creating) {
     e.preventDefault();
     let event = {
       event_owner: this.owner.current.value,
@@ -18,7 +18,12 @@ class EventsInput extends React.Component {
       event_description: this.description.current.value,
       event_id: this.props.event.event_id,
     };
-    this.props.handleSubmitEdit(event);
+    if (creating) {
+      this.props.handleSubmitCreate(event);
+    } else {
+      //instead of creating we are editing
+      this.props.handleSubmitEdit(event);
+    }
   }
 
   render() {

@@ -18,7 +18,7 @@ class Events extends Component {
     this.handleDeleteEvent = this.handleDeleteEvent.bind(this);
     this.state = {
       events: [],
-      currEditing: true,
+      currEditing: false,
       event: {
         event_name: "Parade",
         event_owner: "Benny",
@@ -51,9 +51,9 @@ class Events extends Component {
     this.setState({ event: event });
   }
 
-  handleSubmitCreate(e, event) {
-    e.preventDefault();
-    console.log("Clicking Create button");
+  handleSubmitCreate(event) {
+    console.log("Edit form has been submitted");
+    console.log(event);
   }
 
   /* Functions for EventTable */
@@ -80,6 +80,7 @@ class Events extends Component {
           event={this.state.event}
           currEditing={this.state.currEditing}
           handleSubmitEdit={this.handleSubmitEdit}
+          handleSubmitCreate={this.handleSubmitCreate}
         />
         {/* <EventTable
           events={this.state.events}
