@@ -18,12 +18,12 @@ class Events extends Component {
     this.handleDeleteEvent = this.handleDeleteEvent.bind(this);
     this.state = {
       events: [],
-      currEditing: false,
+      currEditing: true,
       event: {
-        event_name: "",
-        event_owner: "",
-        event_description: "",
-        event_id: "",
+        event_name: "Parade",
+        event_owner: "Benny",
+        event_description: "this is a desc",
+        event_id: "5",
       },
     };
   }
@@ -45,10 +45,10 @@ class Events extends Component {
     this.setState({ events: [...this.state.events, newData] });
   }
 
-  handleSubmitEdit(e, event) {
-    e.preventDefault();
-    console.log("Clicking Edit button");
+  handleSubmitEdit(event) {
+    console.log("Edit form has been submitted");
     console.log(event);
+    this.setState({ event: event });
   }
 
   handleSubmitCreate(e, event) {
@@ -77,9 +77,9 @@ class Events extends Component {
     return (
       <div>
         <EventsInput
-          handleChange={this.handleChange}
           event={this.state.event}
           currEditing={this.state.currEditing}
+          handleSubmitEdit={this.handleSubmitEdit}
         />
         {/* <EventTable
           events={this.state.events}

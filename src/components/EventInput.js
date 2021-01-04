@@ -4,21 +4,21 @@ import InputButton from "./InputButton";
 class EventsInput extends React.Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.owner = React.createRef();
     this.name = React.createRef();
     this.description = React.createRef();
   }
 
   handleSubmit(e) {
-    alert("Form was submitted");
     e.preventDefault();
     let event = {
-      owner: this.owner,
-      name: this.name,
-      description: this.description,
+      event_owner: this.owner.current.value,
+      event_name: this.name.current.value,
+      event_description: this.description.current.value,
+      event_id: this.props.event.event_id,
     };
-    console.log(event);
-    //props.handleEditSubmit(event, 1)
+    this.props.handleSubmitEdit(event);
   }
 
   render() {
@@ -32,10 +32,10 @@ class EventsInput extends React.Component {
             <div className="input-field col s6">
               <i className="material-icons prefix">account_circle</i>
               <input
+                ref={this.owner}
                 type="text"
                 id="icon_prefix"
                 className="validate"
-                onChange={this.props.handleChange}
                 name="owner"
                 defaultValue={this.props.event.event_owner}
               />
@@ -51,7 +51,7 @@ class EventsInput extends React.Component {
                 id="icon_event"
                 className="validate"
                 name="name"
-                onChange={this.props.handleChange}
+                ref={this.name}
                 defaultValue={this.props.event.event_name}
               />
               <label htmlFor="icon_event" className="active">
@@ -65,10 +65,10 @@ class EventsInput extends React.Component {
             <div className="input-field col s11 ">
               <i className="material-icons prefix">insert_comment</i>
               <input
+                ref={this.description}
                 type="text"
                 id="icon_comment"
                 className="validate"
-                onChange={this.props.handleChange}
                 name="description"
                 defaultValue={this.props.event.event_description}
               />
@@ -79,8 +79,7 @@ class EventsInput extends React.Component {
             {/* Input button */}
             <InputButton
               currEditing={this.props.currEditing}
-              handleCreateEvent={this.props.handleCreateEvent}
-              event={this.props.event}
+              handleSubmit={this.handleSubmit}
             />
           </div>
         </form>
