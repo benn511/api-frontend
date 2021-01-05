@@ -20,10 +20,10 @@ class Events extends Component {
       events: [],
       currEditing: false,
       event: {
-        event_name: "Parade",
-        event_owner: "Benny",
-        event_description: "this is a desc",
-        event_id: "5",
+        event_name: "",
+        event_owner: "",
+        event_description: "",
+        event_id: "",
       },
     };
   }
@@ -46,9 +46,19 @@ class Events extends Component {
   }
 
   handleSubmitEdit(event) {
+    // Todo: clear input's
+    // Todo: toggle state
     console.log("Edit form has been submitted");
     console.log(event);
-    this.setState({ event: event });
+    this.setState({
+      event: {
+        event_name: "",
+        event_owner: "",
+        event_description: "",
+        event_id: "",
+      },
+      currEditing: false,
+    });
   }
 
   handleSubmitCreate(event) {
@@ -82,12 +92,12 @@ class Events extends Component {
           handleSubmitEdit={this.handleSubmitEdit}
           handleSubmitCreate={this.handleSubmitCreate}
         />
-        {/* <EventTable
+        <EventTable
           events={this.state.events}
           handleDeleteEvent={this.handleDeleteEvent}
           handleEditEvent={this.handleEditEvent}
           currEditing={this.state.currEditing}
-        /> */}
+        />
       </div>
     );
   }

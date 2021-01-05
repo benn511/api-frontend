@@ -12,11 +12,12 @@ class EventsInput extends React.Component {
 
   handleSubmit(e, creating) {
     e.preventDefault();
+    document.getElementById("event-form").reset();
     let event = {
-      event_owner: this.owner.current.value,
-      event_name: this.name.current.value,
       event_description: this.description.current.value,
       event_id: this.props.event.event_id,
+      event_name: this.name.current.value,
+      event_owner: this.owner.current.value,
     };
     if (creating) {
       this.props.handleSubmitCreate(event);
@@ -30,7 +31,7 @@ class EventsInput extends React.Component {
     return (
       <div className="row">
         {/* Materialize form */}
-        <form className="col s12">
+        <form id="event-form" className="col s12">
           {/* Owner and Event Name */}
           <div className="row">
             {/* Owner input */}
