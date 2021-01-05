@@ -1,7 +1,6 @@
 import React from "react";
 
-/* Missing style, missing delete button,  */
-
+// TODO: disable edit button when event has no id
 export default function EventList(props) {
   return (
     <tr>

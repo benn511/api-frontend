@@ -9,7 +9,6 @@ class Events extends Component {
     super();
     /* First component: EventInput */
     this.handleChange = this.handleChange.bind(this);
-    this.handleNewEvent = this.handleNewEvent.bind(this);
     this.handleSubmitEdit = this.handleSubmitEdit.bind(this);
     this.handleSubmitCreate = this.handleSubmitCreate.bind(this);
 
@@ -41,14 +40,15 @@ class Events extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleNewEvent(newData) {
-    this.setState({ events: [...this.state.events, newData] });
-  }
-
   handleSubmitEdit(event) {
-    // Todo: clear input's
-    // Todo: toggle state
-    console.log("Edit form has been submitted");
+    // Todo: Update events[]
+    let currArr = this.state.events;
+    for (let i = 0; i < currArr.length; i++) {
+      if (currArr[i].event_id == event.event_id) {
+        currArr[i] = event;
+        break;
+      }
+    }
     console.log(event);
     this.setState({
       event: {
@@ -57,13 +57,14 @@ class Events extends Component {
         event_description: "",
         event_id: "",
       },
+      events: currArr,
       currEditing: false,
     });
   }
 
   handleSubmitCreate(event) {
-    console.log("Edit form has been submitted");
-    console.log(event);
+    console.log("Create input form has been submitted", event);
+    this.setState({ events: [...this.state.events, event] });
   }
 
   /* Functions for EventTable */

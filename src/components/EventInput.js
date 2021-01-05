@@ -12,13 +12,13 @@ class EventsInput extends React.Component {
 
   handleSubmit(e, creating) {
     e.preventDefault();
-    document.getElementById("event-form").reset();
     let event = {
       event_description: this.description.current.value,
       event_id: this.props.event.event_id,
       event_name: this.name.current.value,
       event_owner: this.owner.current.value,
     };
+    document.getElementById("event-form").reset();
     if (creating) {
       this.props.handleSubmitCreate(event);
     } else {
