@@ -1,11 +1,27 @@
 # Event Management Tool Front-End React
 
+## Adding new records
+
+![Create](./public/create.gif)
+
+## Updating existing record
+
+![Update](./public/update.gif)
+
+## Deleting existing record
+
+![Destroy](./public/destroy.gif)
+
 ## Event Form for basic CRUD applications
 
-## Available scripts
+## Installation
 
-    npm test : runs mocha, chai, chai-http unit tests
-    npm run : starts development server
+Use the package manager[npm] to install dependencies
+
+```
+npm i
+npm start
+```
 
 ## Features
 
